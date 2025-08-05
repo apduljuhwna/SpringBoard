@@ -49,9 +49,21 @@
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
             </ul>
+            <%
+              com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
 
-            <button type="button" class="btn btn-secondary me-5" onclick="location.href='/login'">로그인</button>
-
+              if (user != null) {
+            %>
+            <div style="text-align: right;">
+              <strong style="color: white"><%= user.getU_name() %> 님 환영합니다!</strong>
+            </div>
+            <%
+            } else {
+            %>
+            <button type="button" class="btn btn-secondary me-5" onclick="location.href='/user/login'">로그인</button>
+            <%
+              }
+            %>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button class="btn btn-outline-success" type="submit">Search</button>

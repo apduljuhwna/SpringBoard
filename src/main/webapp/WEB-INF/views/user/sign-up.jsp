@@ -2,10 +2,12 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/login_style.css">
 
+
+
 <div id="regist_wrap" class="wrap" style="margin-top: 100px;">
   <div>
     <h1>Join</h1>
-    <form action="sign-up" method="post" name="regiform" id="regist_form" class="form" onsubmit="return sendit()">
+    <form action="/user/sign-up" method="post" name="regiform" id="regist_form" class="form" onsubmit="return sendit()">
       <p><input type="text" name="u_name" id="username" placeholder="Name (한글, 영어)"></p>
       <p><input type="text" name="u_id" id="userid" placeholder="ID">
         <input type="hidden" name="decide_id" id="decide_id">
@@ -22,7 +24,7 @@
           <option value="daum.net">daum.net</option>
         </select>
       </p>
-      <p><input type="text" name="phone" id="userphone" placeholder="Phone Number"></p>
+      <p><input type="text" name="u_phone" id="userphone" placeholder="Phone Number"></p>
       <p><span style='color:red; font-size:13px; float:left;'>&nbsp;&nbsp;&nbsp;"-" 없이 11자리 숫자만 입력</span>
         <input type="submit" value="회원가입" id="join_button" class="form_btn">
       </p>
