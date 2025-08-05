@@ -22,14 +22,18 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
-    // JSP 를 위한설정
+    // JSP 를 위한 설정
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'javax.servlet:jstl:1.2'
 
-    // 마리아디비 연결
-    implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
+    // Spring 프레임 워크 설정
+    implementation 'org.springframework:spring-webmvc:5.3.33'
 
     // 마이바티스 설정
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+
+    // 마리아디비 연결
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
