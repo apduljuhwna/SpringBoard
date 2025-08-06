@@ -40,17 +40,17 @@
         <table style="display:inline-table; width: 50%; text-align: center">
             <thead>
             <tr style="background-color: lightgrey; font-size: 25px">
-                <th>번호</th>
-                <th>제목</th>
+                <th style="width: 100px;">번호</th>
+                <th style="text-align: left">제목</th>
                 <th>작성자</th>
                 <th> </th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="board" items="${boardList}">
-            <tr>
+            <tr style="border-bottom: 1px solid black">
                 <td><c:out value="${board.b_id}"></c:out> </td>
-                <td><a href="/board/view?b_id=${board.b_id}" style="text-decoration-line: none"><c:out value="${board.b_title}"></c:out> </a> </td>
+                <td style="text-align: left"><a href="/board/view?b_id=${board.b_id}" style="text-decoration-line: none"><c:out value="${board.b_title}"></c:out> </a> </td>
                 <td><c:out value="${board.u_name}"></c:out> </td>
                 <c:if test="${user != null and user.u_id == board.id}">
 
