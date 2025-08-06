@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td>작 성 자</td>
-        <td><input type="text" disabled value="'<%=user.getU_name()%>'"></td>
+        <td><input type="text" disabled value="<%=user.getU_name()%>"></td>
       </tr>
     </table>
     <div style="text-align: center; margin-top: 10px">

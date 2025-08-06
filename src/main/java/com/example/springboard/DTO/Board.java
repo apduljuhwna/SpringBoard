@@ -4,9 +4,17 @@ public class Board {
     private int b_id;
     private String b_title;
     private String b_content;
-    
     //폴인키
     private String id;
+    private String u_name; // 작성자 이름
+
+    public String getU_name() {
+        return u_name;
+    }
+
+    public void setU_name(String u_name) {
+        this.u_name = u_name;
+    }
 
     public int getB_id() {
         return b_id;

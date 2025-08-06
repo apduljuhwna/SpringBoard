@@ -15,4 +15,14 @@
                      #{id}
                  )
     </insert>
+
+    <select id="findAllBoard" parameterType="com.example.springboard.DTO.Board">
+        SELECT a.*, b.u_name from board a join user b on a.id = b.u_id order by b_id desc
+    </select>
+
+    <delete id="deleteBoard" parameterType="com.example.springboard.DTO.Board">
+        DELETE FROM board where b_id = #{b_id}
+    </delete>
+
+
 </mapper>

@@ -1,16 +1,10 @@
 package com.example.springboard.controller;
 
 import com.example.springboard.DTO.Board;
-import com.example.springboard.DTO.User;
 import com.example.springboard.Mapper.BoardMapper;
-import com.example.springboard.Mapper.UserMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -40,5 +34,11 @@ public class BoardController {
     @GetMapping("/view")
     public String view(HttpSession session){
         return "board/view";
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("b_id") int b_id){
+        boardMapper.deleteBoard(b_id);
+        return "redirect:/";
     }
 }
