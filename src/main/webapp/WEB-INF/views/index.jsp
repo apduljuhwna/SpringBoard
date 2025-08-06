@@ -16,11 +16,24 @@
     }
 %>
 
-    <div style="width: 100%; margin-top: 50px; text-align: center" >
-        <div style="width: 50%; margin: 50px auto 30px auto; text-align: right;">
-            <button onclick="location.href='/board/create'">글쓰기</button>
-        </div>
+<%
+    com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
+%>
 
+<div style="width: 100%; margin-top: 50px; text-align: center;">
+    <div style="width: 50%; margin: 50px auto 30px auto; text-align: right;">
+        <%
+            if (user != null) {
+        %>
+        <button onclick="location.href='/board/create'">글쓰기</button>
+        <%
+        } else {
+        %>
+        <button onclick="alert('로그인을 해야 글을 쓰실 수 있습니다.'); location.href='/user/login';">글쓰기</button>
+        <%
+            }
+        %>
+    </div>
         <table style="display:inline-table; width: 50%; text-align: center">
             <thead>
             <tr style="background-color: lightgrey; font-size: 25px">
