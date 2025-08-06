@@ -56,4 +56,12 @@ public class UserController {
         request.setAttribute("msg","성공하셨습니다");
         return "/user/login";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        session.invalidate();
+
+        return "redirect:/";
+    }
 }

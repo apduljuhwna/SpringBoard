@@ -10,6 +10,4 @@ public class HomeController {
     public String index() {
         return "index";  // → /WEB-INF/views/index.jsp 로 이동
     }
-
-
 }
