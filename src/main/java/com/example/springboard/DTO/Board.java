@@ -4,9 +4,10 @@ public class Board {
     private int b_id;
     private String b_title;
     private String b_content;
+    private String u_name; // 작성자 이름
     //폴인키
     private String id;
-    private String u_name; // 작성자 이름
+
 
     public String getU_name() {
         return u_name;

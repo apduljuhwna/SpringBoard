@@ -20,9 +20,17 @@
         SELECT a.*, b.u_name from board a join user b on a.id = b.u_id order by b_id desc
     </select>
 
+    <select id="findBoardById" parameterType="com.example.springboard.DTO.Board">
+        SELECT a.*, b.u_name from board a join user b on a.id = b.u_id where b_id = #{b_id}
+    </select>
+
     <delete id="deleteBoard" parameterType="com.example.springboard.DTO.Board">
         DELETE FROM board where b_id = #{b_id}
     </delete>
+
+    <update id="updateBoard" parameterType="com.example.springboard.DTO.Board">
+        update board set b_title = #{b_title} , b_content = #{b_content} where b_id = #{b_id}
+    </update>
 
 
 </mapper>

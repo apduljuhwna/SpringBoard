@@ -10,4 +10,6 @@ public interface BoardMapper {
     void insertBoard(Board board);
     List<Board> findAllBoard();
     void deleteBoard(int b_id);
+    Board findBoardById(int b_id);
+    void updateBoard(Board board);
 }

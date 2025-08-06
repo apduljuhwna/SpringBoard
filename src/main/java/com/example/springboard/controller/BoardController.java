@@ -3,9 +3,11 @@ package com.example.springboard.controller;
 import com.example.springboard.DTO.Board;
 import com.example.springboard.Mapper.BoardMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board")
@@ -32,7 +34,25 @@ public class BoardController {
         return "redirect:/";
     }
     @GetMapping("/view")
-    public String view(HttpSession session){
+    public String view(@RequestParam("b_id") int b_id, Model model){
+        Board board = boardMapper.findBoardById(b_id);
+        model.addAttribute("board", board);
+        System.out.println("제목 = " + board.getB_title());
+        System.out.println("작성자 = " + board.getU_name());
+        return "board/view";
+    }
+
+    @GetMapping("/update")
+    public String update(@RequestParam("b_id") int b_id , Model model){
+        Board board = boardMapper.findBoardById(b_id);
+        model.addAttribute("board", board);
+        return "board/update";
+    }
+
+    @PostMapping("/update")
+    public String updateBoard(@ModelAttribute Board board){
+        boardMapper.updateBoard(board);
+        System.out.println("ggg = "+  board.getB_id());
         return "board/view";
     }
 
