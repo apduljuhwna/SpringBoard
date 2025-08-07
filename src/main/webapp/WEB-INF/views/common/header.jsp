@@ -5,8 +5,6 @@
   Time: 오전 11:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,10 +13,15 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
-
-
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ page import="com.example.springboard.DTO.Board" %>
+    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
   </head>
   <body>
+    <%
+    com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
+    %>
       <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">HOME</a>
@@ -30,8 +33,6 @@
 
             </ul>
             <%
-              com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
-
               if (user != null) {
             %>
             <div style="text-align: right;">

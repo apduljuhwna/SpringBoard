@@ -1,14 +1,10 @@
-<%@ page import="com.example.springboard.DTO.Board" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <style rel="/static/css/board.css"></style>
-
 <%
     String msg = (String) session.getAttribute("msg");
     if(msg != null) {
 %>
-
 <script>
     alert("<%= msg%>");
 </script>
@@ -17,12 +13,6 @@
     session.removeAttribute("msg"); // 보여준 뒤 제거
     }
 %>
-
-<%
-    com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
-
-%>
-
 <div style="width: 100%; margin-top: 50px; text-align: center;">
     <div style="width: 50%; margin: 50px auto 30px auto; text-align: right;">
         <%
@@ -63,5 +53,23 @@
             </c:forEach>
             </tbody>
         </table>
+        <div style="display: block; text-align: center;">
+		<c:if test="${pagingVO.startPage != 1 }">
+			<a href="/?nowPage=${pagingVO.startPage - 1 }&cntPerPage=${pagingVO.cntPerPage}">&lt;</a>
+		</c:if>
+		<c:forEach begin="${pagingVO.startPage }" end="${pagingVO.endPage }" var="p">
+			<c:choose>
+				<c:when test="${p == pagingVO.nowPage }">
+					<b>${p }</b>
+				</c:when>
+				<c:when test="${p != pagingVO.nowPage }">
+					<a href="/?nowPage=${p }&cntPerPage=${pagingVO.cntPerPage}">${p }</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${pagingVO.endPage != pagingVO.lastPage}">
+			<a href="/?nowPage=${pagingVO.endPage+1 }&cntPerPage=${pagingVO.cntPerPage}">&gt;</a>
+		</c:if>
+	</div>
     </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

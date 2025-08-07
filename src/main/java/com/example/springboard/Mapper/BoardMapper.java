@@ -1,6 +1,7 @@
 package com.example.springboard.Mapper;
 
 import com.example.springboard.DTO.Board;
+import com.example.springboard.utils.PagingVO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface BoardMapper {
     void deleteBoard(int b_id);
     Board findBoardById(int b_id);
     void updateBoard(Board board);
+    int countBoard();
+    List<Board> selectBoard(PagingVO pagingVO);
 }

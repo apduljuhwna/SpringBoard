@@ -32,5 +32,14 @@
         update board set b_title = #{b_title} , b_content = #{b_content} where b_id = #{b_id}
     </update>
 
+    <select id="countBoard" parameterType="int">
+        select COUNT(*) from board;
+    </select>
+
+    <select id="selectBoard" parameterType="com.example.springboard.DTO.Board">
+        SELECT a.*, b.u_name FROM board a join user b on a.id = b.u_id
+            ORDER BY b_id DESC
+            LIMIT #{start}, #{cntPerPage}
+    </select>
 
 </mapper>

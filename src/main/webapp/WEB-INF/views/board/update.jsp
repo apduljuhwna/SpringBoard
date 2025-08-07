@@ -1,12 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="/WEB-INF/views/common/header.jsp" />
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-  com.example.springboard.DTO.User user = (com.example.springboard.DTO.User) session.getAttribute("user");
-%>
-
-
-
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
+<%@ include file="/WEB-INF/views/common/header.jsp" %>
 <form action="/board/update?b_id=${board.b_id}" method="post">
   <input type="hidden" name="id" value="<%=user.getU_id()%>">
   <div style="width: 100%; display: flex; justify-content: center; margin-top: 50px">
@@ -26,9 +20,4 @@
     </div>
   </div>
 </form>
-
-
-
-
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
