@@ -3,10 +3,7 @@ package com.example.springboard.controller;
 import com.example.springboard.DTO.User;
 import com.example.springboard.Mapper.UserMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,9 +29,8 @@ public class UserController {
         System.out.println("입력받은 PW: " + user.getU_password());
 
         User dbUser = userMapper.findById(user.getU_id());
-        System.out.println(": " + dbUser.getU_id());
 
-        if (dbUser != null && dbUser.getU_password().equals(user.getU_password())) {
+        if (dbUser != null && dbUser.getU_password().equals(user.getU_password()) && dbUser.getU_id().equals(user.getU_id())) {
             session.setAttribute("user", dbUser);
             session.setAttribute("msg", "로그인 성공!");
             return "redirect:/"; // 🔥 redirect로 이동
@@ -54,6 +50,15 @@ public class UserController {
         userMapper.insertUser(user);
         request.setAttribute("msg","성공하셨습니다");
         return "/user/login";
+    }
+
+    @GetMapping(value = "/checkid", produces = "text/plain")
+    @ResponseBody
+    public String checkid(@RequestParam("u_id") String u_id) {
+        System.out.println("전달된 u_id: " + u_id);
+        String result = userMapper.checkid(u_id);
+        System.out.println("받은 result: " + result);
+        return result;
     }
 
     @GetMapping("/logout")

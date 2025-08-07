@@ -17,7 +17,9 @@
       <c:if test="${user != null and user.u_id == board.id}">
         <button onclick="location='update?b_id=${board.b_id}'">수정하기</button>
       </c:if>
-      <button type="button" onclick="location='/'">뒤로가기</button>
+      <button type="button" onclick="location.href='/?nowPage=${nowPage}&cntPerPage=${cntPerPage}'">
+        뒤로가기
+      </button>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ package com.example.springboard.controller;
 
 import com.example.springboard.DTO.Board;
 import com.example.springboard.Mapper.BoardMapper;
+import com.example.springboard.utils.PagingVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,14 @@ public class BoardController {
         return "redirect:/";
     }
     @GetMapping("/view")
-    public String view(@RequestParam("b_id") int b_id, Model model){
+    public String view(@RequestParam("b_id") int b_id, Model model, PagingVO pagingVO
+            , @RequestParam(value = "nowPage" , required = false) String nowPage
+            , @RequestParam(value = "cntPerPage" , required = false) String cntPerPage){
         Board board = boardMapper.findBoardById(b_id);
         model.addAttribute("board", board);
+        boardMapper.plusviewCount(b_id);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("cntPerPage", cntPerPage);
         System.out.println("제목 = " + board.getB_title());
         System.out.println("작성자 = " + board.getU_name());
         return "board/view";

@@ -7,7 +7,15 @@ public class Board {
     private String u_name; // 작성자 이름
     //폴인키
     private String id;
+    private int b_view;
 
+    public int getB_view() {
+        return b_view;
+    }
+
+    public void setB_view(int b_view) {
+        this.b_view = b_view;
+    }
 
     public String getU_name() {
         return u_name;

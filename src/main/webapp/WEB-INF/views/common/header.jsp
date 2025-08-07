@@ -17,6 +17,8 @@
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%@ page import="com.example.springboard.DTO.Board" %>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
   </head>
   <body>
     <%

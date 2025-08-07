@@ -15,4 +15,5 @@ public interface BoardMapper {
     void updateBoard(Board board);
     int countBoard();
     List<Board> selectBoard(PagingVO pagingVO);
+    void plusviewCount(int b_id);
 }

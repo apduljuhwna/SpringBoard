@@ -22,4 +22,8 @@
     <select id="findById" parameterType="com.example.springboard.DTO.User">
         select * from user where u_id = #{u_id} and u_password = #{u_password}
     </select>
+
+    <select id="checkid" parameterType="String">
+        select count(*) from user where u_id = #{value}
+    </select>
 </mapper>

@@ -42,4 +42,8 @@
             LIMIT #{start}, #{cntPerPage}
     </select>
 
+    <update id="plusviewCount" parameterType="int">
+        UPDATE board SET b_view = b_view + 1 where b_id = #{b_id}
+    </update>
+
 </mapper>

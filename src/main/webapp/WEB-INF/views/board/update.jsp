@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<form action="/board/update?b_id=${board.b_id}" method="post">
+<form action="/board/update?b_id=${board.b_id}" method="post" onclick="return check()">
   <input type="hidden" name="id" value="<%=user.getU_id()%>">
   <div style="width: 100%; display: flex; justify-content: center; margin-top: 50px">
     <div style="width: 30%; margin: 50px auto 0 auto; ">
@@ -20,4 +20,19 @@
     </div>
   </div>
 </form>
+<script>
+  function check(){
+    var b_title = $('#b_title').val();
+    var b_content = $('#b_content').val();
+    if(b_title === ""){
+      alert("제목을 입력해주세요");
+      return false;
+    }
+    if(b_content === ""){
+      alert("내용을 입력해주세요");
+      return false;
+    }
+    return true; // 함수 안으로 들어와야 함!
+  }
+</script>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
