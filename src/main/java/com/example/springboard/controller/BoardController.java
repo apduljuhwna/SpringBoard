@@ -26,15 +26,19 @@ public class BoardController {
     }
 
     @PostMapping("/create")
-    public String createBoard(@ModelAttribute Board board){
+    public String createBoard(@ModelAttribute Board board,Model model
+                                , @RequestParam(value = "nowPage" , required = false) String nowPage
+                                , @RequestParam(value = "cntPerPage" , required = false) String cntPerPage){
         System.out.println("입력받은 제목: " + board.getB_title());
         System.out.println("입력받은 내용: " + board.getB_content());
         System.out.println("입력받은 아이디: " + board.getId());
         boardMapper.insertBoard(board);
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("cntPerPage", cntPerPage);
         return "redirect:/";
     }
     @GetMapping("/view")
-    public String view(@RequestParam("b_id") int b_id, Model model, PagingVO pagingVO
+    public String view(@RequestParam("b_id") int b_id, Model model
             , @RequestParam(value = "nowPage" , required = false) String nowPage
             , @RequestParam(value = "cntPerPage" , required = false) String cntPerPage){
         Board board = boardMapper.findBoardById(b_id);

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<style rel="/static/css/board.css"></style>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/board.css">
 <%
     String msg = (String) session.getAttribute("msg");
     if(msg != null) {
@@ -18,16 +18,16 @@
         <%
             if (user != null) {
         %>
-        <button onclick="location.href='/board/create'">글쓰기</button>
+        <button onclick="location.href='/board/create'" style="">글쓰기</button>
         <%
         } else {
         %>
-        <button onclick="alert('로그인을 해야 글을 쓰실 수 있습니다.'); location.href='/user/login';" class="btn btn-secondary me-5">글쓰기</button>
+        <button onclick="alert('로그인을 해야 글을 쓰실 수 있습니다.'); location.href='/user/login';" class="btn btn-secondary me-0">글쓰기</button>
         <%
             }
         %>
     </div>
-        <table style="display:inline-table; width: 50%; text-align: center">
+        <table style="display:inline-table; width: 50%; text-align: center; " >
             <thead>
             <tr style="background-color: lightgrey; font-size: 25px">
                 <th style="width: 100px;">번호</th>
@@ -39,13 +39,13 @@
             </thead>
             <tbody>
             <c:forEach var="board" items="${boardList}">
-            <tr style="border-bottom: 1px solid black">
+            <tr class="tr0">
                 <td><c:out value="${board.b_id}"></c:out> </td>
                 <td style="text-align: left"><a href="/board/view?b_id=${board.b_id}&nowPage=${pagingVO.nowPage}&cntPerPage=${pagingVO.cntPerPage}" style="text-decoration-line: none"><c:out value="${board.b_title}"></c:out> </a> </td>
                 <td><c:out value="${board.u_name}"></c:out> </td>
                 <c:if test="${user != null and user.u_id == board.id}">
 
-                    <td><button onclick="location='board/delete?b_id=${board.b_id}'; alert('정말 삭제를 하시겠습니까?' )" class="btn btn-secondary me-5">삭제</button></td>
+                    <td><button onclick="location='board/delete?b_id=${board.b_id}'; alert('정말 삭제를 하시겠습니까?' )" class="btn btn-secondary me-0">삭제</button></td>
                 </c:if>
                 <c:if test="${user == null or user.u_id != board.id}">
                     <td> </td>

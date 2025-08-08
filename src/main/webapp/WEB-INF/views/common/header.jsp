@@ -62,5 +62,4 @@
         </div>
       </nav>
       <div style="text-align: center; width: 100%; background-color: antiquewhite">
-        <h1 style="color: black; text-align: center">게시판</h1>
       </div>

@@ -1,26 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
-<div style="width: 100%; display: flex; justify-content: center; margin-top: 50px">
-  <div style="width: 50%;">
-    <div style="text-align: center;">
-      <h1 style="margin-top: 30px;">${board.b_title}</h1>
-    </div>
-
-    <div style="text-align: right;">
-      <p>작성자: ${board.u_name}</p>
-    </div>
-
-    <div style="text-align: center;">
-      <p>내용</p>
-      <p style="margin-top: 30px;">${board.b_content}</p>
-
+<div class="card mb-3 mt-5" >
+  <div class="card-body" style="display:grid; justify-items: center">
+    <img src="..." class="card-img-top" alt="...">
+    <h5 class="card-title">${board.b_title}</h5>
+    <p class="card-text">${board.b_content}</p>
+    <p class="card-text"><small class="text-body-secondary">작성자: ${board.u_name}</small></p>
+    <p style="text-align: center">
       <c:if test="${user != null and user.u_id == board.id}">
-        <button onclick="location='update?b_id=${board.b_id}'">수정하기</button>
+        <button onclick="location='update?b_id=${board.b_id}'" class="btn btn-secondary me-0" style="justify-items: center">수정하기</button>
       </c:if>
-      <button type="button" onclick="location.href='/?nowPage=${nowPage}&cntPerPage=${cntPerPage}'">
-        뒤로가기
-      </button>
-    </div>
+        <button onclick="location='/?nowPage=${endPage+1 }&cntPerPage=${cntPerPage}'" class="btn btn-secondary me-0" style="justify-items: center">뒤로가기</button>
+    </p>
+
   </div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
