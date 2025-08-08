@@ -48,11 +48,16 @@
             <%
               }
             %>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">Search</button>
+            <form action="/" method="get">
+              <select name="searchType">
+                <option value="title" <c:if test="${searchType eq 'title'}">selected</c:if>>제목</option>
+                <option value="text" <c:if test="${searchType eq 'text'}">selected</c:if>>내용</option>
+                <option value="title_text" <c:if test="${searchType eq 'title_text'}">selected</c:if>>제목+내용</option>
+                <option value="nick" <c:if test="${searchType eq 'nick'}">selected</c:if>>작성자</option>
+              </select>
+              <input type="text" name="keyword" value="${keyword}" placeholder="검색어 입력">
+              <button type="submit" class="btn btn-secondary me-5">검색</button>
             </form>
-
           </div>
         </div>
       </nav>

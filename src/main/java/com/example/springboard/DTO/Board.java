@@ -9,6 +9,7 @@ public class Board {
     private String id;
     private int b_view;
 
+
     public int getB_view() {
         return b_view;
     }

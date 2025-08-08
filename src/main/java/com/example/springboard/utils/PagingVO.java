@@ -2,8 +2,27 @@ package com.example.springboard.utils;
 
 public class PagingVO {
     // 현재페이지, 시작페이지, 끝페이지, 게시글 총 갯수, 페이지당 글 갯수, 마지막페이지, SQL쿼리에 쓸 start, end
-    private int nowPage,startPage,endPage,total,cntPerPage,lastPage,start,end;
+    private int nowPage,startPage,endPage,total,cntPerPage,lastPage,start;
     private int cntPage = 5; //페이지 가 몆인지 보여줄지 보여준다.
+
+    private String searchType; // "title" | "text" | "title_text" | "nick"
+    private String keyword;
+
+    public String getSearchType() {
+        return searchType;
+    }
+
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public PagingVO(){
     }
@@ -13,7 +32,7 @@ public class PagingVO {
         setTotal(total);
         calcLastPage(getTotal(),getCntPerPage());
         calcStartEndPage(getNowPage(),cntPage);
-        calcStartEnd(getNowPage(),getCntPerPage(),getNowPage());
+        calcStartEnd(getNowPage(),getCntPerPage());
     }
     // 약 현재 67개의 데이터가 있다고 가정
     //total = 67 , cntPerPage = 10
@@ -40,12 +59,10 @@ public class PagingVO {
 
     //DB 쿼리에서 사용할 start, end 값 계산
     //nowPage = 6 , cntPerPage = 10
-    public void calcStartEnd(int nowPage, int cntPerPage , int getNowPage){
-        setEnd(nowPage * cntPerPage); //End = 60
-        if(getNowPage() == 1) setStart(getEnd() - cntPerPage);
-        else setStart(getEnd() - cntPerPage +1); //51
-        //즉 6페이지에서 보여줄 게시글 번호는 51번~60번
-    }
+        public void calcStartEnd(int nowPage, int cntPerPage){
+            // start = offset(0-base), end는 사용 안 해도 됨
+            this.start = (nowPage - 1) * cntPerPage;  // 1→0, 2→10, 6→50
+        }
 
     public int getNowPage() {
         return nowPage;
@@ -103,26 +120,11 @@ public class PagingVO {
         this.start = start;
     }
 
-    public int getEnd() {
-        return end;
-    }
-
-    public void setEnd(int end) {
-        this.end = end;
-    }
-
     public int getCntPage() {
         return cntPage;
     }
 
     public void setCntPage(int cntPage) {
         this.cntPage = cntPage;
-    }
-
-    @Override
-    public String toString() {
-        return "PagingVO [nowPage=" + nowPage + ", startPage=" + startPage + ", endPage=" + endPage + ", total=" + total
-                + ", cntPerpage=" + cntPerPage + ", lastPage=" + lastPage + ", start=" + start + ", end=" + end
-                + ", cntPage=" + cntPage +"]";
     }
 }

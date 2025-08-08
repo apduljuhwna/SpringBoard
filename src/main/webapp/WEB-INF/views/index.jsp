@@ -22,7 +22,7 @@
         <%
         } else {
         %>
-        <button onclick="alert('로그인을 해야 글을 쓰실 수 있습니다.'); location.href='/user/login';">글쓰기</button>
+        <button onclick="alert('로그인을 해야 글을 쓰실 수 있습니다.'); location.href='/user/login';" class="btn btn-secondary me-5">글쓰기</button>
         <%
             }
         %>
@@ -45,7 +45,7 @@
                 <td><c:out value="${board.u_name}"></c:out> </td>
                 <c:if test="${user != null and user.u_id == board.id}">
 
-                    <td><button onclick="location='board/delete?b_id=${board.b_id}'; alert('정말 삭제를 하시겠습니까?')">삭제</button></td>
+                    <td><button onclick="location='board/delete?b_id=${board.b_id}'; alert('정말 삭제를 하시겠습니까?' )" class="btn btn-secondary me-5">삭제</button></td>
                 </c:if>
                 <c:if test="${user == null or user.u_id != board.id}">
                     <td> </td>

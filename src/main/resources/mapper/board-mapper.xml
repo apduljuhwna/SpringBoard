@@ -46,4 +46,63 @@
         UPDATE board SET b_view = b_view + 1 where b_id = #{b_id}
     </update>
 
+
+    <!-- 검색 포함: 개수 -->
+    <select id="countBoardWithSearch"
+            parameterType="com.example.springboard.utils.PagingVO"
+            resultType="int">
+        SELECT COUNT(*)
+        FROM board a
+        JOIN user b ON a.id = b.u_id
+        <where>
+            <if test="keyword != null and keyword != ''">
+                <choose>
+                    <when test="searchType == 'title'">
+                        a.b_title LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                    <when test="searchType == 'text'">
+                        a.b_content LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                    <when test="searchType == 'title_text'">
+                        (a.b_title LIKE CONCAT('%', #{keyword}, '%')
+                        OR a.b_content LIKE CONCAT('%', #{keyword}, '%'))
+                    </when>
+                    <when test="searchType == 'nick'">
+                        b.u_name LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+    </select>
+
+    <!-- 검색 포함: 목록 -->
+    <select id="selectBoardWithSearch"
+            parameterType="com.example.springboard.utils.PagingVO"
+            resultType="com.example.springboard.DTO.Board">
+        SELECT a.*, b.u_name
+        FROM board a
+        JOIN user b ON a.id = b.u_id
+        <where>
+            <if test="keyword != null and keyword != ''">
+                <choose>
+                    <when test="searchType == 'title'">
+                        a.b_title LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                    <when test="searchType == 'text'">
+                        a.b_content LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                    <when test="searchType == 'title_text'">
+                        (a.b_title LIKE CONCAT('%', #{keyword}, '%')
+                        OR a.b_content LIKE CONCAT('%', #{keyword}, '%'))
+                    </when>
+                    <when test="searchType == 'nick'">
+                        b.u_name LIKE CONCAT('%', #{keyword}, '%')
+                    </when>
+                </choose>
+            </if>
+        </where>
+        ORDER BY a.b_id DESC
+        LIMIT #{start}, #{cntPerPage}
+    </select>
+
 </mapper>
