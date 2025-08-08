@@ -5,10 +5,18 @@ public class Board {
     private String b_title;
     private String b_content;
     private String u_name; // 작성자 이름
+    private int b_view;
+    private String image_path;
     //폴인키
     private String id;
-    private int b_view;
 
+    public String getImage_path() {
+        return image_path;
+    }
+
+    public void setImage_path(String image_path) {
+        this.image_path = image_path;
+    }
 
     public int getB_view() {
         return b_view;

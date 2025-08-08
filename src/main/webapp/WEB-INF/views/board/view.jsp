@@ -2,7 +2,9 @@
 <%@ include file="/WEB-INF/views/common/header.jsp" %>
 <div class="card mb-3 mt-5" >
   <div class="card-body" style="display:grid; justify-items: center">
-    <img src="..." class="card-img-top" alt="...">
+    <c:if test="${not empty board.image_path}">
+      <img src="${pageContext.request.contextPath}${board.image_path}" alt="첨부 이미지" style="max-width:500px;">
+    </c:if>
     <h5 class="card-title">${board.b_title}</h5>
     <p class="card-text">${board.b_content}</p>
     <p class="card-text"><small class="text-body-secondary">작성자: ${board.u_name}</small></p>

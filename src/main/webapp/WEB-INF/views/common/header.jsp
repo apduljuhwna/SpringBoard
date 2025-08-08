@@ -44,7 +44,7 @@
             <%
             } else {
             %>
-            <button type="button" class="btn btn-secondary me-5" onclick="location.href='/user/login'">로그인</button>
+            <button type="button" class="btn btn-secondary me-3" onclick="location.href='/user/login'">로그인</button>
             <%
               }
             %>
@@ -56,7 +56,7 @@
                 <option value="nick" <c:if test="${searchType eq 'nick'}">selected</c:if>>작성자</option>
               </select>
               <input type="text" name="keyword" value="${keyword}" placeholder="검색어 입력">
-              <button type="submit" class="btn btn-secondary me-5">검색</button>
+              <button type="submit" class="btn btn-secondary me-0">검색</button>
             </form>
           </div>
         </div>

@@ -8,11 +8,13 @@
         INSERT INTO board (
             b_title,
             b_content,
-            id
+            id,
+            image_path
         ) VALUES (
                      #{b_title},
                      #{b_content},
-                     #{id}
+                     #{id},
+                     #{image_path}
                  )
     </insert>
 

@@ -18,7 +18,7 @@
         <%
             if (user != null) {
         %>
-        <button onclick="location.href='/board/create'" style="">글쓰기</button>
+        <button onclick="location.href='/board/create'" class="btn btn-secondary me-0">글쓰기</button>
         <%
         } else {
         %>
